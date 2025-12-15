@@ -1,70 +1,277 @@
-# Getting Started with Create React App
+# 🎬 CineManager - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Interface web moderna para gerenciamento de cinemas, desenvolvida com React.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7.9.4-CA4245?logo=react-router&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.12.2-5A29E4?logo=axios&logoColor=white)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📋 Sobre o Projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O **CineManager Frontend** é a interface web do sistema de gestão de cinemas. Esta aplicação permite que administradores e funcionários gerenciem de forma eficiente:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🎥 **Salas de cinema** - Cadastro e gerenciamento de salas com capacidade
+- 🎬 **Sessões** - Programação de filmes com horários e preços
+- 🍿 **Produtos** - Controle de bomboniere (pipoca, refrigerantes, etc.)
+- 👥 **Usuários** - Gerenciamento de acesso ao sistema
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Tecnologias Utilizadas
 
-### `npm run build`
+| Tecnologia | Versão | Finalidade |
+|------------|--------|------------|
+| **React** | 19.2.0 | Biblioteca principal para construção da interface |
+| **React Router DOM** | 7.9.4 | Gerenciamento de rotas e navegação SPA |
+| **Axios** | 1.12.2 | Requisições HTTP para comunicação com a API |
+| **React Toastify** | 10.0.5 | Notificações visuais (toasts) para feedback ao usuário |
+| **Create React App** | 5.0.1 | Configuração e build do projeto |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📁 Estrutura do Projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── components/          # Componentes reutilizáveis
+│   ├── Navbar.js       # Barra de navegação principal
+│   └── PrivateRoute.js # Componente de proteção de rotas
+│
+├── contexts/            # Contextos React (gerenciamento de estado global)
+│   ├── AuthContext.js  # Contexto de autenticação (login/logout)
+│   └── ThemeContext.js # Contexto de tema (claro/escuro)
+│
+├── pages/               # Páginas da aplicação
+│   ├── Login.js        # Tela de login
+│   ├── Register.js     # Tela de cadastro de novos usuários
+│   ├── Dashboard.js    # Painel principal com resumo do sistema
+│   ├── Salas.js        # Gerenciamento de salas de cinema
+│   ├── Sessoes.js      # Gerenciamento de sessões de filmes
+│   ├── Produtos.js     # Gerenciamento de produtos da bomboniere
+│   └── Usuarios.js     # Gerenciamento de usuários do sistema
+│
+├── services/            # Serviços de comunicação externa
+│   └── api.js          # Configuração do Axios e interceptors
+│
+├── App.js              # Componente raiz com configuração de rotas
+├── App.css             # Estilos globais da aplicação
+└── index.js            # Ponto de entrada da aplicação
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Pré-requisitos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Antes de começar, certifique-se de ter instalado:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Node.js** (versão 16 ou superior) - [Download](https://nodejs.org/)
+- **npm** (geralmente incluído com o Node.js)
+- **Backend CineManager** rodando (API REST)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🔧 Instalação e Configuração
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Clone ou acesse o projeto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd api-player-front-final
+```
 
-### Code Splitting
+### 2. Instale as dependências
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm install
+```
 
-### Analyzing the Bundle Size
+### 3. Configure a conexão com o Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+O arquivo `src/services/api.js` contém a configuração de conexão com a API. Verifique se a URL base está correta:
 
-### Making a Progressive Web App
+```javascript
+// src/services/api.js
+const api = axios.create({
+    baseURL: 'http://localhost:3001' // URL do seu backend
+});
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> ⚠️ **Importante:** O backend deve estar rodando antes de iniciar o frontend.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## ▶️ Como Executar
 
-### Deployment
+### Modo de Desenvolvimento
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Execute o comando abaixo para iniciar o servidor de desenvolvimento:
 
-### `npm run build` fails to minify
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A aplicação será aberta automaticamente em:
+- 🌐 **http://localhost:3000**
+
+O servidor possui **hot reload** - qualquer alteração no código será refletida automaticamente no navegador.
+
+### Build para Produção
+
+Para gerar a versão otimizada para produção:
+
+```bash
+npm run build
+```
+
+Os arquivos otimizados serão gerados na pasta `build/`.
+
+---
+
+## 🔐 Sistema de Autenticação
+
+A aplicação utiliza um sistema de autenticação baseado em **JWT (JSON Web Token)**:
+
+1. **Login:** O usuário fornece credenciais (email/senha)
+2. **Token:** A API retorna um token JWT válido
+3. **Armazenamento:** O token é salvo no `localStorage`
+4. **Proteção:** Rotas privadas verificam a existência do token
+5. **Requisições:** O token é enviado automaticamente em todas as requisições
+
+### Rotas Públicas
+- `/login` - Página de login
+- `/register` - Página de cadastro
+
+### Rotas Protegidas (requerem autenticação)
+- `/dashboard` - Painel principal
+- `/salas` - Gerenciamento de salas
+- `/sessoes` - Gerenciamento de sessões
+- `/produtos` - Gerenciamento de produtos
+
+---
+
+## 🎨 Funcionalidades Principais
+
+### 📊 Dashboard
+- Visão geral do sistema
+- Estatísticas de salas, sessões e produtos
+- Acesso rápido às principais funcionalidades
+
+### 🎥 Gerenciamento de Salas
+- Listar todas as salas
+- Criar novas salas
+- Editar informações (nome, capacidade)
+- Excluir salas
+
+### 🎬 Gerenciamento de Sessões
+- Programar sessões de filmes
+- Definir horários e preços
+- Associar sessões às salas
+- Controle de disponibilidade
+
+### 🍿 Gerenciamento de Produtos
+- Cadastrar produtos da bomboniere
+- Definir preços e categorias
+- Controle de estoque
+- Edição e exclusão de itens
+
+### 👥 Gerenciamento de Usuários
+- Listar usuários do sistema
+- Editar perfis de usuário
+- Gerenciar permissões de acesso
+
+---
+
+## 🧪 Scripts Disponíveis
+
+| Comando | Descrição |
+|---------|-----------|
+| `npm start` | Inicia o servidor de desenvolvimento |
+| `npm test` | Executa os testes automatizados |
+| `npm run build` | Gera build de produção |
+| `npm run eject` | Ejeta as configurações do CRA* |
+
+> *⚠️ `npm run eject` é uma operação irreversível. Use apenas se precisar de configurações avançadas.
+
+---
+
+## 🌐 Contextos Globais
+
+### AuthContext
+Gerencia o estado de autenticação global:
+- `user` - Dados do usuário logado
+- `token` - Token JWT armazenado
+- `login()` - Função para realizar login
+- `logout()` - Função para realizar logout
+- `isAuthenticated` - Verifica se está autenticado
+
+### ThemeContext
+Gerencia o tema visual da aplicação:
+- `theme` - Tema atual (light/dark)
+- `toggleTheme()` - Alterna entre temas
+
+---
+
+## 🔗 Integração com o Backend
+
+Esta aplicação frontend comunica-se com a API REST do CineManager através dos seguintes endpoints:
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/auth/login` | Autenticação de usuário |
+| POST | `/auth/register` | Cadastro de novo usuário |
+| GET | `/salas` | Lista todas as salas |
+| POST | `/salas` | Cria nova sala |
+| PUT | `/salas/:id` | Atualiza uma sala |
+| DELETE | `/salas/:id` | Remove uma sala |
+| GET | `/sessoes` | Lista todas as sessões |
+| POST | `/sessoes` | Cria nova sessão |
+| PUT | `/sessoes/:id` | Atualiza uma sessão |
+| DELETE | `/sessoes/:id` | Remove uma sessão |
+| GET | `/produtos` | Lista todos os produtos |
+| POST | `/produtos` | Cria novo produto |
+| PUT | `/produtos/:id` | Atualiza um produto |
+| DELETE | `/produtos/:id` | Remove um produto |
+
+---
+
+## ❓ Solução de Problemas
+
+### Erro: "Cannot connect to backend"
+1. Verifique se o backend está rodando
+2. Confirme a URL em `src/services/api.js`
+3. Verifique se as portas estão corretas
+
+### Erro: "npm start" não funciona no PowerShell
+Execute este comando antes:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+### Página em branco após login
+1. Verifique o console do navegador (F12)
+2. Confirme se o token está sendo salvo corretamente
+3. Limpe o `localStorage` e tente novamente
+
+---
+
+## 📚 Saiba Mais
+
+- [Documentação do React](https://react.dev/)
+- [Documentação do React Router](https://reactrouter.com/)
+- [Documentação do Axios](https://axios-http.com/)
+- [Create React App](https://create-react-app.dev/)
+
+---
+
+## 📄 Licença
+
+Este projeto foi desenvolvido para fins educacionais.
+
+---
+
+<div align="center">
+
+**Desenvolvido com ❤️ usando React**
+
+</div>
